@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contador de Palabras Gratis y En Línea</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Palabras Gratis y En Línea</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>Contador de Palabras y Caracteres</h1>
+            <button id="theme-toggle" class="btn-secondary">🌙 Modo Oscuro</button>
+        </header>
 
-  <main class="container">
-    <h1>Contador de Palabras y Caracteres</h1>
-    <p class="description">Escribe o pega tu texto a continuación para analizarlo en tiempo real.</p>
+        <p class="subtitle">Escribe o pega tu texto a continuación para analizarlo en tiempo real.</p>
+        
+        <textarea id="text-input" placeholder="Escribe o pega tu texto aquí..."></textarea>
+        
+        <div class="stats-container">
+            <div class="stat-card">
+                <span id="word-count" class="stat-number">0</span>
+                <span class="stat-label">Palabras</span>
+            </div>
+            <div class="stat-card">
+                <span id="char-count" class="stat-number">0</span>
+                <span class="stat-label">Caracteres</span>
+            </div>
+            <div class="stat-card">
+                <span id="reading-time" class="stat-number">0 min</span>
+                <span class="stat-label">Tiempo de lectura</span>
+            </div>
+        </div>
 
-    <!-- Área para escribir el texto -->
-    <textarea id="text-input" placeholder="Escribe o pega tu texto aquí..."></textarea>
-
-    <!-- Panel de estadísticas -->
-    <div class="stats-grid">
-      <div class="stat-card">
-        <span class="stat-number" id="word-count">0</span>
-        <span class="stat-label">Palabras</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number" id="char-count">0</span>
-        <span class="stat-label">Caracteres</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number" id="reading-time">0 min</span>
-        <span class="stat-label">Tiempo de lectura</span>
-      </div>
+        <div class="actions">
+            <button id="clear-btn" class="btn-danger">Limpiar texto</button>
+            <button id="copy-btn" class="btn-success">Copiar texto</button>
+        </div>
     </div>
 
-    <!-- Botón de acción -->
-    <button id="clear-btn" class="btn">Limpiar texto</button>
-  </main>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
-
 </html>
