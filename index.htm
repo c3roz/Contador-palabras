@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contador de Palabras Gratis y En Línea</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <main class="container">
+    <h1>Contador de Palabras y Caracteres</h1>
+    <p class="description">Escribe o pega tu texto a continuación para analizarlo en tiempo real.</p>
+
+    <!-- Área para escribir el texto -->
+    <textarea id="text-input" placeholder="Escribe o pega tu texto aquí..."></textarea>
+
+    <!-- Panel de estadísticas -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-number" id="word-count">0</span>
+        <span class="stat-label">Palabras</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" id="char-count">0</span>
+        <span class="stat-label">Caracteres</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" id="reading-time">0 min</span>
+        <span class="stat-label">Tiempo de lectura</span>
+      </div>
+    </div>
+
+    <!-- Botón de acción -->
+    <button id="clear-btn" class="btn">Limpiar texto</button>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
