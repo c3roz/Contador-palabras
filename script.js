@@ -1,32 +1,49 @@
-// 1. Seleccionar los elementos del HTML
 const textInput = document.getElementById('text-input');
 const wordCount = document.getElementById('word-count');
 const charCount = document.getElementById('char-count');
 const readingTime = document.getElementById('reading-time');
 const clearBtn = document.getElementById('clear-btn');
+const copyBtn = document.getElementById('copy-btn');
+const themeToggle = document.getElementById('theme-toggle');
 
-// 2. Función para actualizar los contadores
-function updateStats() {
-  const text = textInput.value;
+// Actualizar contadores
+textInput.addEventListener('input', () => {
+    const text = textInput.value.trim();
+    
+    // Contar caracteres
+    charCount.textContent = textInput.value.length;
+    
+    // Contar palabras
+    const words = text === '' ? 0 : text.split(/\s+/).length;
+    wordCount.textContent = words;
+    
+    // Tiempo estimado de lectura (200 palabras x minuto)
+    const minutes = Math.ceil(words / 200);
+    readingTime.textContent = text === '' ? '0 min' : `${minutes} min`;
+});
 
-  // Contar caracteres totales
-  charCount.textContent = text.length;
-
-  // Contar palabras (separamos por espacios y filtramos elementos vacíos)
-  const words = text.trim().split(/\s+/).filter(word => word.length > 0);
-  const totalWords = text.trim() === '' ? 0 : words.length;
-  wordCount.textContent = totalWords;
-
-  // Calcular tiempo estimado de lectura (promedio de 200 palabras por minuto)
-  const minutes = Math.ceil(totalWords / 200);
-  readingTime.textContent = totalWords === 0 ? '0 min' : `${minutes} min`;
-}
-
-// 3. Escuchar el evento de escritura en el textarea
-textInput.addEventListener('input', updateStats);
-
-// 4. Funcionalidad para el botón de limpiar
+// Limpiar texto
 clearBtn.addEventListener('click', () => {
-  textInput.value = '';
-  updateStats();
+    textInput.value = '';
+    textInput.dispatchEvent(new Event('input'));
+});
+
+// Copiar texto al portapapeles
+copyBtn.addEventListener('click', () => {
+    if (textInput.value === '') return;
+    
+    navigator.clipboard.writeText(textInput.value).then(() => {
+        const originalText = copyBtn.textContent;
+        copyBtn.textContent = '¡Copiado!';
+        setTimeout(() => {
+            copyBtn.textContent = originalText;
+        }, 1500);
+    });
+});
+
+// Cambiar Modo Oscuro / Claro
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    themeToggle.textContent = isDark ? '☀️ Modo Claro' : '🌙 Modo Oscuro';
 });
